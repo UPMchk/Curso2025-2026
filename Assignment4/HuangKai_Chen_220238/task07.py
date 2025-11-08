@@ -187,33 +187,23 @@ report.validate_07_03(g, query)
 
 """**Task 7.4: List the name of those entities who have a colleague with a dog, or that have a collegue who has a colleague who has a dog (in SPARQL). Return the results in a variable called name**"""
 
-query = """
-PREFIX ns:   <http://oeg.fi.upm.es/def/people#>
+query =  """
+PREFIX ns: <http://oeg.fi.upm.es/def/people#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT DISTINCT ?name
-WHERE {
-  # nombre por la propiedad esperada
-  ?x ns:hasName ?name .
-
-  # CASO A: colega directo con perro (evita autocolegaje)
+SELECT DISTINCT ?name WHERE {
   {
-    ?x ns:hasColleague ?y .
-    FILTER(?x != ?y)
-    ?y ns:hasPet ?pet .
+    ?person ns:hasColleague ?colleague1 .
+    ?colleague1 ns:ownsPet ?pet .
+    ?pet a ns:Animal .
   }
   UNION
-  # CASO B: colega de colega con perro (evita igualdades triviales)
   {
-    ?x ns:hasColleague ?y .
-    FILTER(?x != ?y)
-    ?y ns:hasColleague ?z .
-    FILTER(?x != ?z && ?y != ?z)
-    ?z ns:hasPet ?pet .
+    ?person ns:hasColleague ?colleague1 .
+    ?colleague1 ns:hasColleague ?colleague2 .
+    ?colleague2 ns:ownsPet ?pet .
+    ?pet a ns:Animal .
   }
-
-  # perro con clase EXACTA Dog
-  ?pet a ns:Dog .
+  ?person rdfs:label ?name .
 }
 """
 
