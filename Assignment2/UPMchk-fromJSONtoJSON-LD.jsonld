@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "res": "https://www.example.org/resources#",
+    "prop": "https://www.example.org/properties#",
+    "people": "https://www.example.org/people#",
+    "sub": "https://www.example.org/subjects#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "fullName": "people:fullName",
+    "hometown": "people:hometown",
+    "age": { "@id": "people:age", "@type": "xsd:integer" },
+    "almaMater": "people:almaMater",
+    "parents": "people:parents",
+    "subjects": "people:subjects",
+    "name": "people:name",
+    "role": "people:role",
+    "subject": "sub:subject",
+    "teachers": "sub:teachers",
+    "description": "sub:description"
+  },
+
+  "@id": "res:UPMchk",
+  "@type": "people:Person",
+  "fullName": "HuangKai Chen",
+  "hometown": "Las Palmas",
+  "age": 21,
+  "almaMater": "ETS Ingenieros Informáticos, Universidad Politécnica de Madrid",
+
+  "parents": [
+    { "@id": "res:p01", "@type": "people:Parent", "name": "Li Chen", "role": "Madre" },
+    { "@id": "res:p02", "@type": "people:Parent", "name": "Liang Chen", "role": "Padre" }
+  ],
+
+"subjects": [
+  {
+    "@id": "res:s01",
+    "@type": "sub:Subject",
+    "subject": "Semantic Web, Linked Data and Knowledge Graphs",
+    "teachers": [
+      { "@id": "res:t01", "@type": "people:Person", "name": "Oscar Corcho García" }
+    ],
+    "description": "Publicación y consumo de datos enlazados en la Web, ontologías y grafos de conocimiento."
+  },
+  {
+    "@id": "res:s02",
+    "@type": "sub:Subject",
+    "subject": "Estructura de Computadores",
+    "teachers": [
+      { "@id": "res:t02", "@type": "people:Person", "name": "Santiago Rodríguez" }
+    ],
+    "description": "Arquitectura básica del computador, organización del procesador y jerarquía de memoria."
+  },
+  {
+    "@id": "res:s03",
+    "@type": "sub:Subject",
+    "subject": "Procesadores de Lenguajes",
+    "teachers": [
+      { "@id": "res:t03", "@type": "people:Person", "name": "Aurora Pérez" }
+    ],
+    "description": "Diseño e implementación de compiladores e intérpretes: análisis léxico, sintáctico y semántico."
+  },
+  {
+    "@id": "res:s04",
+    "@type": "sub:Subject",
+    "subject": "Sistemas Operativos",
+    "teachers": [
+      { "@id": "res:t04", "@type": "people:Person", "name": "Francisco Rosales García" }
+    ],
+    "description": "Conceptos fundamentales de sistemas operativos, gestión de procesos, memoria y archivos."
+  }
+]
+
+}
